@@ -1,0 +1,23 @@
+{
+  "name": "monorepo-template",
+  "license": "MIT",
+  "packageManager": "yarn@4.6.0",
+  "scripts": {
+    "dev:hono": "yarn workspace hono-backend start",
+    "dev:nest": "yarn workspace nest-backend start",
+    "dev:next": "yarn workspace next-frontend dev",
+    "dev:nuxt": "yarn workspace nuxt-frontend dev",
+    "lint:nuxt": "yarn workspace nuxt-frontend lint",
+    "lint:next": "yarn workspace next-frontend lint",
+    "lint:nest": "yarn workspace nest-backend lint",
+    "lint:back": "yarn runt lint:nest",
+    "lint:front": "yarn run lint:nuxt && yarn run lint:next",
+    "lint": "yarn run lint:back && yarn run lint:front"
+  },
+  "type": "module",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*",
+    "shared/*"
+  ]
+}
