@@ -1,5 +1,5 @@
 ARG NODE_VERSION=23-alpine as base
-FROM node:$NODE_VERSION AS hono-backend-dev
+FROM node:$NODE_VERSION AS hono-backend-prod
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
@@ -10,6 +10,6 @@ COPY package*.json pnpm* ./
 COPY ./packages/hono-backend/package.json packages/hono-backend/
 COPY ./packages/hono-backend packages/hono-backend
 
-RUN pnpm --filter hono-backend install
+RUN pnpm --filter hono-backend install --frozen-lockfile
 
 CMD ["pnpm", "dev:hono"]

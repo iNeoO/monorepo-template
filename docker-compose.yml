@@ -1,37 +1,33 @@
 services:
   nest-backend:
     container_name: nest-backend
-    build: 
+    build:
       dockerfile: ./packages/nest-backend/Dockerfile
     ports:
-      - "3010:3000"
+      - "4010:3000"
     develop:
       watch:
         - action: sync
           path: ./packages/nest-backend
           target: /app/packages/nest-backend
           ignore:
-          - node_modules/
-        - action: rebuild
-          path: package.json
+            - node_modules/
         - action: rebuild
           path: ./packages/nest-backend/package.json
 
   hono-backend:
     container_name: hono-backend
-    build: 
+    build:
       dockerfile: ./packages/hono-backend/Dockerfile
     ports:
-      - "3011:3000"
+      - "4011:3000"
     develop:
       watch:
         - action: sync
           path: ./packages/hono-backend
           target: /app/packages/hono-backend
           ignore:
-          - node_modules/
-        - action: rebuild
-          path: package.json
+            - node_modules/
         - action: rebuild
           path: ./packages/hono-backend/package.json
 
@@ -40,7 +36,7 @@ services:
     build:
       dockerfile: ./packages/next-frontend/Dockerfile
     ports:
-      - "3000:3000"
+      - "4000:3000"
     develop:
       watch:
         - action: sync
@@ -49,8 +45,6 @@ services:
           ignore:
             - node_modules/
         - action: rebuild
-          path: package.json
-        - action: rebuild
           path: ./packages/next-frontend/package.json
 
   nuxt-frontend:
@@ -58,7 +52,7 @@ services:
     build:
       dockerfile: ./packages/nuxt-frontend/Dockerfile
     ports:
-      - "3001:3000"
+      - "4001:3000"
     develop:
       watch:
         - action: sync
@@ -66,7 +60,5 @@ services:
           target: /app/packages/nuxt-frontend
           ignore:
             - node_modules/
-        - action: rebuild
-          path: package.json
         - action: rebuild
           path: ./packages/nuxt-frontend/package.json

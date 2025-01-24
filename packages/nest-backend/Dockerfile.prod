@@ -1,0 +1,33 @@
+FROM node:23-alpine AS nest-backend-prod-base
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+FROM nest-backend-prod-base AS nest-backend-prod-deps
+WORKDIR /app
+
+COPY package*.json pnpm* ./
+COPY ./packages/nest-backend/package.json packages/nest-backend/
+RUN pnpm install --filter nest-backend --frozen-lockfile
+
+# Build stage
+FROM nest-backend-prod-base AS nest-backend-prod-build
+WORKDIR /app
+
+COPY --from=nest-backend-prod-deps /app/node_modules ./node_modules
+COPY --from=nest-backend-prod-deps /app/packages/nest-backend/node_modules ./packages/nest-backend/node_modules
+COPY ./packages/nest-backend packages/nest-backend
+
+RUN pnpm --filter nest-backend run build
+
+# Runtime stage
+FROM nest-backend-prod-base AS nest-backend-prod-runtime
+WORKDIR /app
+
+COPY --from=nest-backend-prod-build --chown=node:node /app/packages/nest-backend/dist  .
+
+ENV NODE_ENV=production
+
+ENV NITRO_HOST=0.0.0.0
+ENV NITRO_PORT=3000
+
+CMD ["node", "dist/main.js"]

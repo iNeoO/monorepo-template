@@ -7,6 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "lint": "eslint .",
+    "format": "prettier --write \"./app.vue\" \"./src/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\"",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -16,8 +17,16 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^0.7.5",
+    "@eslint/js": "^9.18.0",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^9.18.0",
-    "typescript": "^5.7.3"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.21.0"
   }
 }
