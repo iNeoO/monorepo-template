@@ -1,32 +1,29 @@
 {
-  "name": "monorepo-template",
-  "license": "MIT",
-  "scripts": {
-    "dev:hono": "pnpm --filter hono-backend start",
-    "dev:nest": "pnpm --filter nest-backend start",
-    "dev:next": "pnpm --filter next-frontend dev",
-    "dev:nuxt": "pnpm --filter nuxt-frontend dev",
-    "lint:nuxt": "pnpm --filter nuxt-frontend lint",
-    "lint:next": "pnpm --filter next-frontend lint",
-    "lint:nest": "pnpm --filter nest-backend lint",
-    "lint:back": "pnpm run lint:nest && pnpm run lint:hono",
-    "lint:front": "pnpm run lint:nuxt && pnpm run lint:next",
-    "lint": "pnpm run lint:back && pnpm run lint:front",
-    "prepare": "husky"
-  },
-  "type": "module",
-  "version": "1.0.0",
-  "workspaces": [
-    "packages/*",
-    "shared/*"
-  ],
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
-  "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.2",
-    "prettier": "^3.4.2"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}": "prettier --write"
-  }
+	"name": "monorepo-template",
+	"license": "MIT",
+	"scripts": {
+		"hono:dev": "pnpm --filter @monorepo-template/hono dev",
+		"hono:build": "pnpm --filter @monorepo-template/hono build",
+		"infra:build": "pnpm --filter @monorepo-template/infra build",
+		"common:build": "pnpm --filter @monorepo-template/common build",
+		"services:build": "pnpm --filter @monorepo-template/services build",
+		"prisma:init": "dotenv -e .env -- pnpm --filter @monorepo-template/prisma db:init",
+		"prisma:emit": "dotenv -e .env -- pnpm --filter @monorepo-template/prisma emit",
+		"prisma:build": "pnpm --filter @monorepo-template/prisma build",
+		"drizzle:build": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle build",
+		"drizzle:drop": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle drop",
+		"drizzle:pull": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle pull",
+		"drizzle:push": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle push",
+		"drizzle:generate": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle generate",
+		"drizzle:migrate": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle migrate",
+		"drizzle:deploy": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle deploy",
+		"drizzle:reset": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle reset",
+		"lint": "pnpm run -r"
+	},
+	"type": "module",
+	"version": "1.0.0",
+	"packageManager": "pnpm@11.3.0",
+	"devDependencies": {
+		"dotenv-cli": "^11.0.0"
+	}
 }

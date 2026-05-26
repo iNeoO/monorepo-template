@@ -1,0 +1,33 @@
+{
+	"name": "@monorepo-template/prisma",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"db:init": "prisma-next db init",
+		"emit": "prisma-next contract emit",
+		"lint": "biome check",
+		"build": "rm -rf dist && tsc",
+		"contract:emit": "prisma-next contract emit"
+	},
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/src/index.d.ts",
+				"default": "./dist/src/index.js"
+			}
+		}
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"dependencies": {
+		"@monorepo-template/infra": "workspace:*",
+		"@prisma-next/cli": "^0.11.0",
+		"@prisma-next/postgres": "^0.11.0"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:"
+	}
+}
