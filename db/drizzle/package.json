@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "rm -rf dist && tsc -p tsconfig.build.json",
+		"build": "rm -rf dist && tsc",
 		"reset": "drizzle-kit push --force",
 		"drop": "drizzle-kit drop",
 		"migrate": "drizzle-kit migrate",
@@ -12,6 +12,14 @@
 		"push": "drizzle-kit push",
 		"pull": "drizzle-kit pull",
 		"lint": "biome check"
+	},
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/src/index.d.ts",
+				"default": "./dist/src/index.js"
+			}
+		}
 	},
 	"keywords": [],
 	"author": "",
@@ -25,6 +33,7 @@
 	"devDependencies": {
 		"@types/pg": "^8.20.0",
 		"@types/node": "catalog:",
+		"typescript": "catalog:",
 		"drizzle-kit": "^0.31.10"
 	}
 }

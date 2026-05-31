@@ -1,13 +1,15 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
-		"module": "NodeNext",
+		"target": "esnext",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"outDir": "dist",
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
 		"strict": true,
-		"verbatimModuleSyntax": true,
-		"skipLibCheck": true,
-		"types": ["node"],
-		"noEmit": true
+		"skipLibCheck": true
 	},
-	"include": ["src/**/*.ts"],
-	"exclude": ["dist", "node_modules", "drizzle.config.ts"]
+	"include": ["src", "drizzle"],
+	"exclude": ["dist", "drizzle.config.ts"]
 }

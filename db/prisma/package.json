@@ -4,11 +4,13 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"db:init": "prisma-next db init",
-		"emit": "prisma-next contract emit",
-		"lint": "biome check",
-		"build": "rm -rf dist && tsc",
-		"contract:emit": "prisma-next contract emit"
+		"generate": "prisma generate",
+		"migrate": "prisma migrate dev",
+		"migrate:deploy": "prisma migrate deploy",
+		"deploy": "prisma db push",
+		"reset": "prisma migrate reset",
+		"lint": "biome check src prisma.config.ts",
+		"build": "rm -rf dist && tsc"
 	},
 	"exports": {
 		".": {
@@ -24,10 +26,14 @@
 	"type": "module",
 	"dependencies": {
 		"@monorepo-template/infra": "workspace:*",
-		"@prisma-next/cli": "^0.11.0",
-		"@prisma-next/postgres": "^0.11.0"
+		"@prisma/adapter-pg": "7.8.0",
+		"@prisma/client": "7.8.0",
+		"pg": "^8.21.0"
 	},
 	"devDependencies": {
-		"@types/node": "catalog:"
+		"@types/node": "catalog:",
+		"@types/pg": "^8.20.0",
+		"prisma": "7.8.0",
+		"typescript": "catalog:"
 	}
 }

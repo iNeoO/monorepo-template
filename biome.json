@@ -9,6 +9,7 @@
 		"ignoreUnknown": false,
 		"includes": [
 			"**",
+			"!db/drizzle/drizzle/**/*.ts",
 			"!db/prisma/prisma/**/*.d.ts",
 			"!db/prisma/prisma/**/*.json"
 		]

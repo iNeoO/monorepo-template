@@ -24,11 +24,8 @@ export const logMiddleware = factory.createMiddleware(async (c, next) => {
 	c.set("logger", logger);
 
 	await loggerStorage.run(logger, async () => {
-		try {
-			await next();
-		} finally {
-			const durationMs = Date.now() - startedAt;
-			logHttpCompletion(logger, c.res.status, durationMs);
-		}
+		await next();
+		const durationMs = Date.now() - startedAt;
+		logHttpCompletion(logger, c.res.status, durationMs);
 	});
 });
