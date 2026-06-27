@@ -1,0 +1,38 @@
+{
+	"name": "@monorepo-template/hono",
+	"type": "module",
+	"scripts": {
+		"dev": "tsx watch --clear-screen=false src/bootstrap.ts",
+		"backend:dev": "tsx watch --clear-screen=false src/bootstrap.ts",
+		"lint": "biome check",
+		"build": "rm -rf dist && tsc",
+		"backend:start": "node dist/bootstrap.js"
+	},
+	"dependencies": {
+		"@hono/node-server": "^2.0.4",
+		"@hono/prometheus": "^1.0.3",
+		"@hono/standard-validator": "^0.2.2",
+		"@monorepo-template/common": "workspace:*",
+		"@monorepo-template/infra": "workspace:*",
+		"@monorepo-template/prisma": "workspace:*",
+		"@monorepo-template/services": "workspace:*",
+		"@scalar/hono-api-reference": "^0.10.19",
+		"hono": "catalog:",
+		"hono-openapi": "catalog:",
+		"zod": "catalog:"
+	},
+	"exports": {
+		"./hc": {
+			"import": {
+				"types": "./dist/libs/hc.d.ts",
+				"default": "./dist/libs/hc.js"
+			}
+		}
+	},
+	"devDependencies": {
+		"@biomejs/biome": "catalog:",
+		"@types/node": "catalog:",
+		"tsx": "catalog:",
+		"typescript": "catalog:"
+	}
+}

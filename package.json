@@ -1,36 +1,26 @@
 {
-	"name": "monorepo-template",
-	"license": "MIT",
-	"scripts": {
-		"hono:dev": "dotenv -e .env -- pnpm --filter @monorepo-template/hono dev",
-		"hono:build": "pnpm --filter @monorepo-template/hono build",
-		"react:dev": "dotenv -e .env -- pnpm --filter @monorepo-template/react dev",
-		"react:build": "pnpm --filter @monorepo-template/react build",
-		"infra:build": "pnpm --filter @monorepo-template/infra build",
-		"common:build": "pnpm --filter @monorepo-template/common build",
-		"services:build": "pnpm --filter @monorepo-template/services build",
-		"prisma:generate": "dotenv -e .env -- pnpm --filter @monorepo-template/prisma generate",
-		"prisma:migrate": "dotenv -e .env -- pnpm --filter @monorepo-template/prisma migrate",
-		"prisma:deploy": "dotenv -e .env -- pnpm --filter @monorepo-template/prisma deploy",
-		"prisma:build": "pnpm --filter @monorepo-template/prisma build",
-		"drizzle:build": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle build",
-		"drizzle:drop": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle drop",
-		"drizzle:pull": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle pull",
-		"drizzle:generate": "dotenv -e .env -- pnpm --filter @monorepo-template/drizzle generate",
-		"dev:db:build": "pnpm run drizzle:build && pnpm prisma:build",
-		"dev:libs:build": "pnpm run common:build && pnpm run infra:build && pnpm run services:build",
-		"dev:runtime": "concurrently -k \"pnpm run hono:dev\" \"pnpm run react:dev\"",
-
-		"dev": "pnpm run dev:db:build && pnpm run dev:libs:build && pnpm run dev:runtime",
-		"lint": "pnpm run -r"
-	},
+	"name": "create-monorepo-template",
+	"version": "0.1.0",
 	"type": "module",
-	"version": "1.0.0",
-	"packageManager": "pnpm@11.3.0",
+	"description": "Scaffold a new monorepo from the monorepo-template starter",
+	"bin": {
+		"create-monorepo-template": "dist/index.js"
+	},
+	"files": [
+		"dist",
+		"templates"
+	],
+	"scripts": {
+		"build": "rm -rf dist && tsc",
+		"dev": "tsc --watch",
+		"lint": "biome check ."
+	},
 	"dependencies": {
-		"dotenv-cli": "^11.0.0"
+		"@inquirer/prompts": "^7.4.0"
 	},
 	"devDependencies": {
-		"concurrently": "^10.0.0"
+		"@biomejs/biome": "^2.4.10",
+		"@types/node": "^25.9.1",
+		"typescript": "^6.0.3"
 	}
 }
