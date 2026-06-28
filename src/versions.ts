@@ -5,7 +5,7 @@ export const VERSIONS = {
 	concurrently: "^10.0.0",
 	// catalog
 	"@biomejs/biome": "^2.4.10",
-	"@hono/node-server": "^1.19.9",
+	"@hono/node-server": "^2.0.4",
 	hono: "^4.12.23",
 	"hono-openapi": "^1.3.0",
 	"@types/node": "^25.9.1",
@@ -13,4 +13,39 @@ export const VERSIONS = {
 	tsx: "^4.22.3",
 	vitest: "^4.1.7",
 	zod: "^4.4.3",
+	// hono backend
+	"@hono/standard-validator": "^0.2.2",
+	"@hono/zod-validator": "^0.8.0",
+	"@scalar/hono-api-reference": "^0.10.19",
+	// infra
+	"openapi-types": "^12.1.3",
+	pino: "^10.3.1",
+	"pino-pretty": "^13.1.3",
+	// prisma
+	"@prisma/adapter-pg": "7.8.0",
+	"@prisma/client": "7.8.0",
+	pg: "^8.22.0",
+	"@types/pg": "^8.20.0",
+	prisma: "7.8.0",
+	// drizzle
+	"drizzle-orm": "1.0.0-rc.4",
+	"drizzle-kit": "1.0.0-rc.4",
+	// react
+	"@tanstack/react-query": "^5.80.0",
+	"@tanstack/react-router": "^1.170.16",
+	"@tanstack/react-table": "^8.21.3",
+	react: "^19.2.6",
+	"react-dom": "^19.2.6",
+	"@babel/core": "^7.29.0",
+	"@rolldown/plugin-babel": "^0.2.3",
+	"@tailwindcss/vite": "^4.3.1",
+	"@tanstack/router-plugin": "^1.168.18",
+	"@types/babel__core": "^7.20.5",
+	"@types/react": "^19.2.14",
+	"@types/react-dom": "^19.2.3",
+	"@vitejs/plugin-react": "^6.0.1",
+	"babel-plugin-react-compiler": "^1.0.0",
+	globals: "^17.6.0",
+	tailwindcss: "^4.3.1",
+	vite: "^8.0.12",
 } as const;

@@ -2,21 +2,20 @@
 	"name": "@monorepo-template/hono",
 	"type": "module",
 	"scripts": {
-		"dev": "tsx watch --clear-screen=false src/bootstrap.ts",
-		"backend:dev": "tsx watch --clear-screen=false src/bootstrap.ts",
+		"dev": "tsx watch --clear-screen=false src/index.ts",
+		"backend:dev": "tsx watch --clear-screen=false src/index.ts",
 		"lint": "biome check",
 		"build": "rm -rf dist && tsc",
-		"backend:start": "node dist/bootstrap.js"
+		"backend:start": "node dist/index.js"
 	},
 	"dependencies": {
-		"@hono/node-server": "^2.0.4",
-		"@hono/prometheus": "^1.0.3",
-		"@hono/standard-validator": "^0.2.2",
+		"@hono/node-server": "__@hono/node-server__",
+"@hono/standard-validator": "__@hono/standard-validator__",
 		"@monorepo-template/common": "workspace:*",
 		"@monorepo-template/infra": "workspace:*",
 		"@monorepo-template/prisma": "workspace:*",
 		"@monorepo-template/services": "workspace:*",
-		"@scalar/hono-api-reference": "^0.10.19",
+		"@scalar/hono-api-reference": "__@scalar/hono-api-reference__",
 		"hono": "catalog:",
 		"hono-openapi": "catalog:",
 		"zod": "catalog:"

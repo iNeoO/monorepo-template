@@ -1,10 +1,10 @@
 {
-	"name": "create-monorepo-template",
+	"name": "@ineoo/create-monorepo",
 	"version": "0.1.0",
 	"type": "module",
-	"description": "Scaffold a new monorepo from the monorepo-template starter",
+	"description": "Scaffold a new monorepo from the @ineoo/monorepo starter",
 	"bin": {
-		"create-monorepo-template": "dist/index.js"
+		"create-monorepo": "dist/index.js"
 	},
 	"files": [
 		"dist",

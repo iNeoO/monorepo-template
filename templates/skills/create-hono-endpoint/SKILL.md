@@ -16,12 +16,18 @@ apps/
   hono/                   ← the backend app
 packages/
   infra/                  ← factories, helpers, middlewares, OpenAPI helpers
-  services/               ← business logic (classes taking PrismaDb)
+  services/               ← business logic (classes taking a DB client)
   common/                 ← cross-app schemas, enums, error constants
 ```
 
+<!--PRISMA_START-->
 Prisma client is imported from `@monorepo-template/prisma`.  
 There is no `packages/db` — persistence goes through `@monorepo-template/prisma` directly in services.
+<!--PRISMA_END-->
+<!--DRIZZLE_START-->
+Drizzle database client is imported from `@monorepo-template/drizzle`.  
+There is no `packages/db` — persistence goes through `@monorepo-template/drizzle` directly in services.
+<!--DRIZZLE_END-->
 
 ## Workflow
 
@@ -43,8 +49,14 @@ There is no `packages/db` — persistence goes through `@monorepo-template/prism
 - Use `openApiResponse` (single item) or `openApiResponses` (list with meta) from `@monorepo-template/infra/helpers` in route files.
 - Use `openApiProtectedRoute` for authenticated routes (adds 401 response automatically).
 - Use `appWithLogs` from `@monorepo-template/infra/factories` as the Hono factory in controllers.
+<!--PRISMA_START-->
 - Services are classes that take `PrismaDb` from `@monorepo-template/prisma` as constructor argument.
 - Services receive `PrismaClient` from `AppServices` in `apps/hono/src/services/container.ts`.
+<!--PRISMA_END-->
+<!--DRIZZLE_START-->
+- Services are classes that take `Database` from `@monorepo-template/drizzle` as constructor argument.
+- Services receive `Database` from `AppServices` in `apps/hono/src/services/container.ts`.
+<!--DRIZZLE_END-->
 - Error responses use `apiError(c, key)` with keys from `API_ERRORS` in `@monorepo-template/infra/helpers`.
 
 ## Response contract

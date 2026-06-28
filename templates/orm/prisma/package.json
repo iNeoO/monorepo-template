@@ -26,14 +26,14 @@
 	"type": "module",
 	"dependencies": {
 		"@monorepo-template/infra": "workspace:*",
-		"@prisma/adapter-pg": "7.8.0",
-		"@prisma/client": "7.8.0",
-		"pg": "^8.21.0"
+		"@prisma/adapter-pg": "__@prisma/adapter-pg__",
+		"@prisma/client": "__@prisma/client__",
+		"pg": "__pg__"
 	},
 	"devDependencies": {
 		"@types/node": "catalog:",
-		"@types/pg": "^8.20.0",
-		"prisma": "7.8.0",
+		"@types/pg": "__@types/pg__",
+		"prisma": "__prisma__",
 		"typescript": "catalog:"
 	}
 }

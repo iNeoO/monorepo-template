@@ -11,27 +11,27 @@
 	},
 	"dependencies": {
 		"@monorepo-template/hono": "workspace:*",
-		"@tanstack/react-query": "^5.80.0",
-		"@tanstack/react-router": "^1.170.16",
-		"@tanstack/react-table": "^8.21.3",
+		"@tanstack/react-query": "__@tanstack/react-query__",
+		"@tanstack/react-router": "__@tanstack/react-router__",
+		"@tanstack/react-table": "__@tanstack/react-table__",
 		"hono": "catalog:",
-		"react": "^19.2.6",
-		"react-dom": "^19.2.6"
+		"react": "__react__",
+		"react-dom": "__react-dom__"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.29.0",
-		"@rolldown/plugin-babel": "^0.2.3",
-		"@tailwindcss/vite": "^4.3.1",
-		"@tanstack/router-plugin": "^1.168.18",
-		"@types/babel__core": "^7.20.5",
+		"@babel/core": "__@babel/core__",
+		"@rolldown/plugin-babel": "__@rolldown/plugin-babel__",
+		"@tailwindcss/vite": "__@tailwindcss/vite__",
+		"@tanstack/router-plugin": "__@tanstack/router-plugin__",
+		"@types/babel__core": "__@types/babel__core__",
 		"@types/node": "catalog:",
-		"@types/react": "^19.2.14",
-		"@types/react-dom": "^19.2.3",
-		"@vitejs/plugin-react": "^6.0.1",
-		"babel-plugin-react-compiler": "^1.0.0",
-		"globals": "^17.6.0",
-		"tailwindcss": "^4.3.1",
+		"@types/react": "__@types/react__",
+		"@types/react-dom": "__@types/react-dom__",
+		"@vitejs/plugin-react": "__@vitejs/plugin-react__",
+		"babel-plugin-react-compiler": "__babel-plugin-react-compiler__",
+		"globals": "__globals__",
+		"tailwindcss": "__tailwindcss__",
 		"typescript": "catalog:",
-		"vite": "^8.0.12"
+		"vite": "__vite__"
 	}
 }

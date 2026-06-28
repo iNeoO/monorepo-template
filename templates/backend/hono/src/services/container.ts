@@ -2,14 +2,14 @@ import { type PrismaClient, prisma } from "@monorepo-template/prisma";
 import { PostsService, UsersService } from "@monorepo-template/services";
 
 export type AppServices = {
-	prisma: PrismaClient;
+	db: PrismaClient;
 	posts: PostsService;
 	users: UsersService;
 };
 
 export const createServices = (): AppServices => {
 	return {
-		prisma,
+		db: prisma,
 		posts: new PostsService(prisma),
 		users: new UsersService(prisma),
 	};

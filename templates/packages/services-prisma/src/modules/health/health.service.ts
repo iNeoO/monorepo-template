@@ -2,11 +2,11 @@ import { getLoggerStore } from "@monorepo-template/infra/libs";
 import type { PrismaDb } from "@monorepo-template/prisma";
 
 export class HealthService {
-	constructor(private prisma: PrismaDb) {}
+	constructor(private db: PrismaDb) {}
 
-	async getPrismaHealth(): Promise<"OK" | "NOT OK"> {
+	async getDbHealth(): Promise<"OK" | "NOT OK"> {
 		try {
-			await this.prisma.$queryRaw`SELECT 1`;
+			await this.db.$queryRaw`SELECT 1`;
 			return "OK";
 		} catch (err) {
 			const logger = getLoggerStore();
@@ -16,10 +16,8 @@ export class HealthService {
 	}
 
 	async getHealth() {
-		const prisma = await this.getPrismaHealth();
+		const db = await this.getDbHealth();
 
-		return {
-			prisma,
-		};
+		return { db };
 	}
 }

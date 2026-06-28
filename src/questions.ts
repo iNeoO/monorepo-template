@@ -4,7 +4,7 @@ export type Answers = {
 	projectName: string
 	backend: "hono" | "none"
 	frontend: "react" | "none"
-	orm: "prisma" | "none"
+	orm: "prisma" | "drizzle" | "none"
 	skills: string[]
 }
 
@@ -23,7 +23,7 @@ export async function askQuestions(): Promise<Answers> {
 	const backend = await select<"hono" | "none">({
 		message: "Backend:",
 		choices: [
-			{ value: "hono", name: "Hono  (OpenAPI · RPC client · OpenTelemetry)" },
+			{ value: "hono", name: "Hono  (OpenAPI · RPC client)" },
 			{ value: "none", name: "None" },
 		],
 	})
@@ -39,12 +39,13 @@ export async function askQuestions(): Promise<Answers> {
 		],
 	})
 
-	let orm: "prisma" | "none" = "none"
+	let orm: "prisma" | "drizzle" | "none" = "none"
 	if (backend === "hono") {
-		orm = await select<"prisma" | "none">({
+		orm = await select<"prisma" | "drizzle" | "none">({
 			message: "ORM:",
 			choices: [
 				{ value: "prisma", name: "Prisma  (PostgreSQL)" },
+				{ value: "drizzle", name: "Drizzle  (PostgreSQL)" },
 				{ value: "none", name: "None" },
 			],
 		})

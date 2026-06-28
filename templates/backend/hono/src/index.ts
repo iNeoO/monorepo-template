@@ -39,7 +39,7 @@ const gracefulShutdown = async (signal: string) => {
 		});
 	});
 
-	await services.prisma.$disconnect();
+	await services.db.$disconnect();
 };
 
 const handleShutdown = (signal: string) => {

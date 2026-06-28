@@ -10,7 +10,7 @@ import { createUsersController } from "./modules/users/users.controller.js";
 import type { AppServices } from "./services/container.js";
 
 export const createApp = (services: AppServices) => {
-	const healthService = new HealthService(services.prisma);
+	const healthService = new HealthService(services.db);
 	return new Hono()
 		.use(requestId())
 		.use(logMiddleware)

@@ -3,22 +3,22 @@ import type { PrismaClient } from "@monorepo-template/prisma";
 import type { CreatePostParams, UpdatePostParams } from "./posts.type.js";
 
 export class PostsService {
-	constructor(private prisma: PrismaClient) {}
+	constructor(private db: PrismaClient) {}
 
 	async findPosts() {
-		return await this.prisma.post.findMany();
+		return await this.db.post.findMany();
 	}
 
 	async findPostsByUser(userId: number) {
-		return await this.prisma.post.findMany({ where: { authorId: userId } });
+		return await this.db.post.findMany({ where: { authorId: userId } });
 	}
 
 	async findPostById(postId: number) {
-		return await this.prisma.post.findUnique({ where: { id: postId } });
+		return await this.db.post.findUnique({ where: { id: postId } });
 	}
 
 	async createPost(payload: CreatePostParams) {
-		return await this.prisma.post.create({ data: payload });
+		return await this.db.post.create({ data: payload });
 	}
 
 	async updatePost(postId: number, payload: UpdatePostParams) {
@@ -26,7 +26,7 @@ export class PostsService {
 		if (!post) {
 			return API_ERROR.POST_NOT_FOUND;
 		}
-		return await this.prisma.post.update({
+		return await this.db.post.update({
 			where: { id: postId },
 			data: payload,
 		});
@@ -37,6 +37,6 @@ export class PostsService {
 		if (!post) {
 			return API_ERROR.POST_NOT_FOUND;
 		}
-		return await this.prisma.post.delete({ where: { id: postId } });
+		return await this.db.post.delete({ where: { id: postId } });
 	}
 }
